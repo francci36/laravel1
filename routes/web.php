@@ -18,7 +18,9 @@ Route::get('/',[ProductController::class, 'viewAll']
 Route::get('/details/{id}', [ProductController::class, 'view'])->name('product.details');
 
 Route::get('/ajout/{id}', [ProductController::class, 'ajouter']);
-Route::get('/panier', [ProductController::class, 'panier'])->name('panier');
+Route::get('/panier', [ProductController::class, 'panier']);
+Route::get('/validation', [ProductController::class, 'validation'])->name('validation');
+
 
 
 

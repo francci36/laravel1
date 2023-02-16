@@ -1,3 +1,6 @@
+@extends('layout')
+{{--ieieiie---}}
+@section('content')
 <div class="product-details">
         <div class="product-row">
              <div class="product-image">
@@ -12,3 +15,4 @@
              </div>
         </div>
     </div>
+@endsection
