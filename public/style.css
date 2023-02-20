@@ -1,17 +1,18 @@
 body{
     width: auto;
     height: auto;
-    background-color: azure;
+    background-color: rgb(209, 223, 223);
 }
 h1{
-    background-color: rgb(148, 160, 118);
+    display: block;
+   padding: 20px;
     color: white;
     text-align: center;
 }
 .contenant{
-    width: 80%;
+    width: 70%;
     padding-left: 10%;
-display: flex;
+display: block;
 flex-wrap: wrap;
 justify-content: space-between;
 }
@@ -42,4 +43,32 @@ a{
     height: 9%;
     text-decoration: none;
 }
- 
+ .container{
+    width: 100%;
+
+ }
+ label,input,textarea, select, button{
+    color: rgb(51, 76, 76);
+   display: block;
+   margin-left: 35%;
+   width: 30%;
+   padding-bottom: 5px;
+   padding-top: 5px;
+   border-style: unset;
+   border-radius: 5px;
+
+ }
+ button{
+    margin-top: 10px;
+ }
+ .header{
+    background-color: rgb(161, 181, 200);
+    color: aliceblue;
+    text-align: left;
+    border-radius: 15px;
+    
+ }
+ .error{
+    color: brown;
+    
+ }

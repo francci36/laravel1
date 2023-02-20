@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <header>coucou</header>
+    <header><h1 class="header">La boutique</h1></header>
     @yield('content')
     <footer>iueuieuie</footer>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\ProductManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -107,6 +108,15 @@ class ProductController extends Controller
         $ordernumber = time();
         return  redirect('validation, $id');
     }
+    
+    public function creer()
+{
+    return view('creer');
+}
+public function save(ProductRequest $request)
+{
+    return "ieieiei";
+}
     
 }
 // relancer PHP artisan dans le dossier de travail

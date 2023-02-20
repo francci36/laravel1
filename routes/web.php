@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +21,7 @@ Route::get('/details/{id}', [ProductController::class, 'view'])->name('product.d
 Route::get('/ajout/{id}', [ProductController::class, 'ajouter']);
 Route::get('/panier', [ProductController::class, 'panier']);
 Route::get('/validation', [ProductController::class, 'validation'])->name('validation');
-
-
+Route::get('/creer',[ProductController::class,'creer'])->name('creer');
+Route::post('product/save', [ProductController::class,'save'])->name('save');
 
 
