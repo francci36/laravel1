@@ -17,7 +17,7 @@
     <div class="contenant">
         @foreach ($products as $product)
         <div class="produit">
-            <img src="images/{{ $product->image }}">
+            <img src="images/{{ $product->photo}}">
             <span class="product-price">{{ $product->price }} € </span>
             <p>This is user {{ $product->name }}</p>
             <a href="/details/{{ $product->id }}" class="product-link">Voir</a>

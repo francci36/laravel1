@@ -23,5 +23,8 @@ Route::get('/panier', [ProductController::class, 'panier']);
 Route::get('/validation', [ProductController::class, 'validation'])->name('validation');
 Route::get('/creer',[ProductController::class,'creer'])->name('creer');
 Route::post('product/save', [ProductController::class,'save'])->name('save');
+Route::get('/product/modify/{id}', [ProductController::class,'modify'])->name('modify');
+Route::put('/product/save-modify/{id}', [ProductController::class,'saveModify'])->name('saveModify');
+Route::delete('/product/delete/{id}', [ProductController::class,'delete'])->name('delete');
 
 

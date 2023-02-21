@@ -22,7 +22,7 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             //le champs nom est obligatoire
             'nom' => 'required|min:2|max:100',
             //la description du produit est obligatoire
@@ -30,8 +30,13 @@ class ProductRequest extends FormRequest
             // une image est obligatoire pour le produit
             'prix' => 'required|numeric|min:0|max:10000',
             // La tva est obligatoire
-            'tva' => 'required|numeric|min:0|max:100'
+            'tva' => 'required|numeric|min:0|max:100',
+            'photo' => 'nullable|image|max:1024'
         ];
+        if($this->input("_method") == null){
+            $rules['photo'] = "required|image|max:1024";
+        }
+        return $rules;
     }
     public function messages(): array
     {
@@ -54,7 +59,9 @@ class ProductRequest extends FormRequest
             'tva.required' => 'choisissez la tva',
             'tva.numeric' => 'Champs destiné aux numéros',
             'tva.min' => 'Valeur égal ou supérieur à 0',
-            'tva.max' => 'Valeur valeur maxi 100'
+            'tva.max' => 'Valeur valeur maxi 100',
+            'photo.image' => 'ça doit être une image',
+            'photo.max' => 'ça doit être au maxi 1Mo'
         ];
     }
 }

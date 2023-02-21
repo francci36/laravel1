@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use App\Models\ProductManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -12,13 +13,16 @@ class ProductController extends Controller
     //On crée une fonction public products
     public function viewAll()
     {
-        $products = ProductManager::getAllProducts();
+        //$products = ProductManager::getAllProducts();
+        $products = Product::all();
         return view('products')->with("products",$products);
     }
     public function view($id)
     {
-        $product = ProductManager::getProductById($id);
+        $product = Product::findOrFail($id);
         return view('details')->with('product',$product);
+       // $product = Product::findOrFail($id);
+        //return view('details')->with('product',$product);
     }
     public function ajouter($id, Request $request) {
         $panier = $request->session()->get("panier",[]);
@@ -113,11 +117,50 @@ class ProductController extends Controller
 {
     return view('creer');
 }
-public function save(ProductRequest $request)
+public function save(ProductRequest $request){
+    // on crée le produid dans la base de donné
+    $product = Product::create($request->all());
+    if($request->photo != null){
+        $photo = $product->id.'.'.$request->photo->extension();
+        $request->file('photo')->move(public_path('images'),$photo);
+        $product->photo =$photo;
+        $product->save();
+    }
+    return redirect('/');
+} 
+public function modify($id)
+
 {
-    return "ieieiei";
+    $product = Product::findOrFail($id);
+    return view('modify')->withProduct($product);
+   
 }
-    
+public function saveModify($id, ProductRequest $request)
+{
+    $product = Product::findOrFail($id);
+    $product->nom = $request->input('nom');
+    $product->description = $request->input('description');
+    $product->prix = $request->input('prix');
+    $product->tva = $request->input('tva');
+    if($request->photo != null){
+        $photo = $product->id.'.'.$request->photo->extension();
+        $todelete = public_path('images')."/".$product->photo;
+        unlink($todelete);
+        $request->file('photo')->move(public_path('images'),$photo);
+        $product->photo =$photo;
+
+    }
+    $product->save();
+    return redirect("/");
+}
+public function delete($id)
+{
+    $product = Product::findOrFail($id);
+    $todelete = public_path('images')."/".$product->photo;
+    unlink($todelete);
+    $product->delete();
+    return redirect("/");
+}
 }
 // relancer PHP artisan dans le dossier de travail
 // ex: cd Docments, cd ecommerce, php artisan.

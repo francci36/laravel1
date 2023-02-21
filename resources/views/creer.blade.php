@@ -28,11 +28,11 @@
             <div class="form-group">
                 <label for="taux">Taux de TVA</label>
                 <select name="tva" id="tva">
-                  <option value=""></option>
-                  <option value="2.1"></option>
-                  <option value="5"></option>
-                  <option value="10"></option>
-                  <option value="20" @if(old("tva")==20") selected @endif>20%></option>
+                  <option value="" @if(old("tva")=="") selected @endif></option>
+                  <option value="2.1" @if(old("tva")=="2.1") selected @endif>2.1%</option>
+                  <option value="5" @if(old("tva")=="5") selected @endif>5%</option>
+                  <option value="10" @if(old("tva")=="10") selected @endif>10%</option>
+                  <option value="20" @if(old("tva")=="20") selected @endif>20%</option>
                 </select>
             </div>
             @error('tva') <div class="error">{{$message}}</div> @enderror
