@@ -132,7 +132,7 @@ public function modify($id)
 
 {
     $product = Product::findOrFail($id);
-    return view('modify')->withProduct($product);
+    return view("modify")->with("product",$product);
    
 }
 public function saveModify($id, ProductRequest $request)
@@ -161,6 +161,7 @@ public function delete($id)
     $product->delete();
     return redirect("/");
 }
+
 }
 // relancer PHP artisan dans le dossier de travail
 // ex: cd Docments, cd ecommerce, php artisan.

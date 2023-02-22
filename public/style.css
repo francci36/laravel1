@@ -12,7 +12,7 @@ h1{
 .contenant{
     width: 70%;
     padding-left: 10%;
-display: block;
+display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 }

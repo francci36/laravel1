@@ -18,8 +18,8 @@
         @foreach ($products as $product)
         <div class="produit">
             <img src="images/{{ $product->photo}}">
-            <span class="product-price">{{ $product->price }} € </span>
-            <p>This is user {{ $product->name }}</p>
+            <span class="product-price">{{ $product->prix }} € </span>
+            <p>{{ $product->nom }}</p>
             <a href="/details/{{ $product->id }}" class="product-link">Voir</a>
         </div>
         @endforeach
